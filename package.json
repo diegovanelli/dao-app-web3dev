@@ -2,7 +2,7 @@
   "name": "mydao",
   "version": "1.0.0",
   "private": true,
-   "dependencies": {
+  "dependencies": {
     "@thirdweb-dev/react": "^3.5.1",
     "@thirdweb-dev/sdk": "^3.5.1",
     "ethers": "^5.6.6",
