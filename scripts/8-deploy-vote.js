@@ -7,7 +7,7 @@ import sdk from "./1-initialize-sdk.js";
       name: "PurrosDAO - A DAO dos charuteiros",
 
       // Essa a localização do seu token de governança, nosso contrato ERC-20!
-      voting_token_address: "0x3f6696Ba23C6032FcfdC104770358AC6cCA92045",
+      voting_token_address: "0x9013B04AFc0175d9B958dC414011B83412831E90",
 
       // Depois de uma proposta ser criada, quando os membros podem começar a votar?
       // Por agora, colocamos isso como imediatamente.

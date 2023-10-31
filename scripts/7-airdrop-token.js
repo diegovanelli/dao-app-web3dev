@@ -3,13 +3,14 @@ import sdk from "./1-initialize-sdk.js";
 (async () => {
   try {
     // Esse é o endereço do nosso contrato ERC-1155 do NFT de filiação.
-    const editionDrop = await sdk.getContract("0x211182F60beA019A17ad40A28aD77E055023De3B", "edition-drop");
+    const editionDrop = await sdk.getContract("0x4601dA0eA4704D6730D89a5793eCd449835f9C5a", "edition-drop");
     // Esse é o endereço do nosso contrato ERC-20 do nosso token.
-    const token = await sdk.getContract("0x3f6696Ba23C6032FcfdC104770358AC6cCA92045","token");
+    const token = await sdk.getContract("0x9013B04AFc0175d9B958dC414011B83412831E90","token");
     // Pegue o endereço de todas as pessoas que possuem o nosso NFT de filiação, que tem
     // o tokenId 0.
     const rolesAndMembers = await editionDrop.roles.getAll();
     const walletAddresses = rolesAndMembers.minter;
+    // const walletAddresses = await editionDrop.history.getAllClaimerAddresses(0);
   
     if (walletAddresses.length === 0) {
       console.log(

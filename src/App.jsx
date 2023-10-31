@@ -3,38 +3,35 @@ import {
   ConnectWallet,
   useContract,
   useNFTBalance,
-  Web3Button,
-  useNetwork,
+  Web3Button
 } from "@thirdweb-dev/react";
-import { ChainId } from '@thirdweb-dev/sdk';
 import { AddressZero } from "@ethersproject/constants";
 import { useState, useEffect, useMemo } from "react";
 
 const App = () => {
   const address = useAddress();
-  const network = useNetwork();
   console.log("Address:", address);
 
-  const editionDropAddress = "0x211182F60beA019A17ad40A28aD77E055023De3B";
+  const editionDropAddress = "0x4601dA0eA4704D6730D89a5793eCd449835f9C5a";
   const { contract: editionDrop } = useContract(
     editionDropAddress,
     "edition-drop"
   );
-  const { contract: token } = useContract(
-    "0x3f6696Ba23C6032FcfdC104770358AC6cCA92045",
-    "token"
-  );
-  const { contract: vote } = useContract(
-    "0xAA67d567e1442E59d3013AFed5fb152B7bf056C6",
-    "vote"
-  );
-
   // Hook para verificar se o úsuario tem a NFT
   const { data: nftBalance } = useNFTBalance(editionDrop, address, "0");
 
   const hasClaimedNFT = useMemo(() => {
     return nftBalance && nftBalance.gt(0);
   }, [nftBalance]);
+
+  const { contract: token } = useContract(
+    "0x9013B04AFc0175d9B958dC414011B83412831E90",
+    "token"
+  );
+  const { contract: vote } = useContract(
+    "0xAA67d567e1442E59d3013AFed5fb152B7bf056C6",
+    "vote"
+  );
 
   // Guarda a quantidade de tokens que cada membro tem nessa variável de estado.
   const [memberTokenAmounts, setMemberTokenAmounts] = useState([]);
@@ -325,18 +322,6 @@ const App = () => {
     );
   }
 
-  if (address && (network?.[0].data.chain.id !== ChainId.Goerli)) {
-    return (
-      <div className="unsupported-network">
-        <h2>Por favor, conecte-se à rede Goerli</h2>
-        <p>
-          Essa dapp só funciona com a rede Goerli, por favor 
-          troque de rede na sua carteira.
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="mint-nft">
       <h1>Cunhe seu NFT 🍪 ele mostra que você é membro desta DAO</h1>
@@ -348,7 +333,7 @@ const App = () => {
           }}
           onSuccess={() => {
             console.log(
-              `🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${editionDrop.getAddress()}/0`
+              `🌊 Successfully Minted! Check it out on OpenSea: https://testnets.opensea.io/assets/mumbai/${editionDrop.getAddress()}/0`
             );
           }}
           onError={(error) => {

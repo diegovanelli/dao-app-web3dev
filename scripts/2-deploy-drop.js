@@ -5,7 +5,7 @@ import { readFileSync } from 'fs';
 (async () => {
   try {
     const editionDropAddress = await sdk.deployer.deployEditionDrop({
-      name: 'Membro da PurrosDAO',
+      name: 'Membro da PurrosDAO 2',
       description: 'A DAO dos amantes de charrutos',
       image: readFileSync('scripts/assets/purros.png'),
       primary_sale_recipient: AddressZero,

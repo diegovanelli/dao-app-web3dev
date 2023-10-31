@@ -3,7 +3,7 @@ import { MaxUint256 } from "@ethersproject/constants";
 
 (async () => {
   try {
-    const editionDrop = await sdk.getContract("0x211182F60beA019A17ad40A28aD77E055023De3B", "edition-drop");
+    const editionDrop = await sdk.getContract("0x4601dA0eA4704D6730D89a5793eCd449835f9C5a", "edition-drop");
     const claimConditions = [{
       startTime: new Date(),
       maxQuantity: 50_000,
